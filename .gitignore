@@ -73,3 +73,5 @@ hs_err_pid*
 deployments
 log
 wildfly-10.0.0.Final/standalone/configuration/logging.properties
+
+
