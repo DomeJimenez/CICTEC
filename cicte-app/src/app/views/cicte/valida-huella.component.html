@@ -1,0 +1,50 @@
+<div class="container">
+    <ngb-alert *ngIf="successMessage" type="{{ alert.type }}" (close)="successMessage = null">{{ alert.msg }}</ngb-alert>
+</div>
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-header">
+                Seleccione el dedo <code>Registrado </code>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-horizontal">
+                        <button *ngIf=" hands.left.little " class="btn btn-finger btn-left-hand-little " [ngClass]="fingerPrintsToShow.left.little? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'left', 'little', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.left.little? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <button *ngIf="hands.left.ring " class="btn btn-finger btn-left-hand-ring " [ngClass]="fingerPrintsToShow.left.ring? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'left', 'ring', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.left.ring? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <button *ngIf="hands.left.middle " class="btn btn-finger btn-left-hand-middle " [ngClass]="fingerPrintsToShow.left.middle? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'left', 'middle', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.left.middle? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <button *ngIf="hands.left.index " class="btn btn-finger btn-left-hand-index " [ngClass]="fingerPrintsToShow.left.index? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'left', 'index', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.left.index? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <button *ngIf="hands.left.thumb " class="btn btn-finger btn-left-hand-thumb " [ngClass]="fingerPrintsToShow.left.thumb? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'left', 'thumb', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.left.thumb? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <button *ngIf="hands.right.little " class="btn btn-finger btn-right-hand-little " [ngClass]="fingerPrintsToShow.right.little? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'right', 'little', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.right.little? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <button *ngIf="hands.right.ring " class="btn btn-finger btn-right-hand-ring " [ngClass]="fingerPrintsToShow.right.ring? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'right', 'ring', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.right.ring? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <button *ngIf="hands.right.middle " class="btn btn-finger btn-right-hand-middle " [ngClass]="fingerPrintsToShow.right.middle? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'right', 'middle', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.right.middle? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <button *ngIf="hands.right.index " class="btn btn-finger btn-right-hand-index " [ngClass]="fingerPrintsToShow.right.index? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'right', 'index', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.right.index? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <button *ngIf="hands.right.thumb " class="btn btn-finger btn-right-hand-thumb " [ngClass]="fingerPrintsToShow.right.thumb? 'btn-success' : 'btn-danger' " (click)="selectFingerToCapture( 'right', 'thumb', $event) ">
+            <span class="fa " [ngClass]="fingerPrintsToShow.right.thumb? 'fa-check' : 'fa-times' "></span>
+          </button>
+                        <img src="../../../assets/huellas//hands.svg " class="img-responsive hands-image center-block ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+</div>

@@ -1,0 +1,6 @@
+ta_codigo,ta_nombre,ta_descripcion
+1,cic_piloto,"grados de la milicia aerea"
+2,cic_pregunta,"tipo de respuesta"
+3,estados,"Tipo de estados"
+4,cic_evaluacion,Funcion
+5,cic_evaluacion,Aereonaves

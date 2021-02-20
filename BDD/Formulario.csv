@@ -1,0 +1,3 @@
+idcic_formulario,fo_nombre,fo_fecha_crea,fo_fecha_mod,fo_codigo,fo_detalle,fo_estado
+NULL,SDO,"\func NOW()","\func NOW()",IE-03,"PARA LA VALORACIÓN DEL EJERCICIO DE SIMULACIÓN SDO","\func default"
+NULL,PRU,"\func default","\func default",IE-00,PRUEBA,NULL

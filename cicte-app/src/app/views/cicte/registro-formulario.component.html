@@ -1,0 +1,48 @@
+<div class="container">
+    <ngb-alert *ngIf="successMessage" type="{{ alert.type }}" (close)="successMessage = null">{{ alert.msg }}</ngb-alert>
+</div>
+<form (ngSubmit)="onSubmit(forma)" #forma="ngForm">
+    <div class="animated fadeIn">
+        <div class="card">
+            <div class="card-header">
+                Ingrese Información del <code>Formulario </code>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                  <i class="fa fa-drivers-license-o "> Código</i>
+                              </span>
+                            </div>
+                            <input type="text" id="codigo" name="codigo" class="form-control" placeholder="Código" [(ngModel)]="formulario.codigo" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"> Nombre</i></span>
+                            </div>
+                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" [(ngModel)]="formulario.nombre" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"> Detalle</i></span>
+                            </div>
+                            <input type="text" id="detalle" name="detalle" class="form-control" placeholder="Detalle" [(ngModel)]="formulario.detalle" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button [disabled]="!forma" type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</form>

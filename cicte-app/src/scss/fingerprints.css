@@ -1,0 +1,86 @@
+.fingerprint-image {
+	width: 100px;
+}
+
+.not-capturable-fingerprint {
+	min-width: 100px;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.fingerprints-section-label {
+    color: #666666;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 17px;
+	text-align: left;
+}
+
+.btn-finger {
+	width: 26px;
+	height: 26px;
+	border-radius: 100px;
+	box-sizing: border-box;
+	padding: 0;
+	position: absolute;
+}
+
+.btn-left-hand-little {
+	left: 75px;
+	top: 94px;
+}
+
+.btn-left-hand-ring {
+	left: 107px;
+	top: 44px;
+}
+
+.btn-left-hand-middle {
+	left: 146px;
+	top: 25px;
+}
+
+.btn-left-hand-index {
+	left: 186px;
+	top: 34px;
+}
+
+.btn-left-hand-thumb {
+	left: 258px;
+	top: 108px;
+}
+
+.btn-right-hand-little {
+	right: 75px;
+	top: 94px;
+}
+
+.btn-right-hand-ring {
+	right: 107px;
+	top: 44px;
+}
+
+.btn-right-hand-middle {
+	right: 146px;
+	top: 25px;
+}
+
+.btn-right-hand-index {
+	right: 186px;
+	top: 34px;
+}
+
+.btn-right-hand-thumb {
+	right: 258px;
+	top: 108px;
+}
+
+.hands-image {
+	width: 500px;
+	margin-left: 35px;
+	margin-right: 35px;
+	padding: 40px;
+}

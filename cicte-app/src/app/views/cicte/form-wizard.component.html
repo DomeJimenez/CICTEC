@@ -1,0 +1,376 @@
+<div class="container">
+    <ngb-alert *ngIf="successMessage" type="{{ alert.type }}" (close)="successMessage = null">{{ alert.msg }}</ngb-alert>
+</div>
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <wizard>
+                        <wizard-step stepTitle="Seleccione el Piloto">
+                            <!-- Pantalla piloto -->
+                            <div class="animated fadeIn">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-right form-inline my-2 my-lg-0">
+                                                    <input class="form-control mr-sm-2 " type="search " placeholder="Identificación del Piloto" (keyup.enter)="buscar(buscarTexto.value)" #buscarTexto>
+                                                    <button (click)="buscar(buscarTexto.value)" class="btn btn-pill btn-outline-success my-2 my-sm-0 " type="button">
+                            <i class="fa fa-search"></i>&nbsp;Buscar
+                          </button>
+                                                    <br />
+                                                </div>
+                                                <br /> <br />
+                                                <table class="table table-responsive-sm table-hover table-outline mb-0">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th class="text-center"><i class="icon-people"></i></th>
+                                                            <th>Nombre</th>
+                                                            <th class="text-center">País</th>
+                                                            <th class="text-center">Identificación</th>
+                                                            <th class="text-center">Grado - Unidad</th>
+                                                            <th class="text-center">Correo</th>
+                                                            <th class="text-center">Teléfono</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let item of pilotos_Consulta | paginate: { itemsPerPage: 10, currentPage: p }">
+                                                            <td class="text-center">
+                                                                <div class="avatar">
+                                                                    <img *ngIf="item.foto != null" [src]="'data:image/jpg;base64,' + item.foto" class="img-avatar">
+                                                                    <img *ngIf="item.foto == null" src="assets/img/avatars/user.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                                    <span class="avatar-status badge-success"></span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div>{{item.nombres}} {{item.apellidos}}</div>
+                                                                <div class="small text-muted">
+                                                                    <span>{{item.fecha_nac | date: 'shortDate'}}</span>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <i [class]=" 'flag-icon h4 mb-0 flag-icon-'+ item.nacionalidad | lowercase" title="us" [id]="item.nacionalidad | lowercase"></i>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <strong>{{item.id_mil}}</strong>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <div class="float-left small">{{item.rango}} | {{item.unidad}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-muted text-center">{{item.email}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-muted text-center">{{item.telefono}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-sm btn-pill btn-ghost-dark" type="button" (click)="largeModal.show(item)" (click)="verPiloto(item)">
+                                  <i class="fa fa-edit "></i>&nbsp; Seleccionar
+                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br />
+                                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/.col-->
+                                </div>
+                            </div>
+                        </wizard-step>
+                        <wizard-step stepTitle="Seleccione el Plan de Vuelo">
+                            <div class="animated fadeIn">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-right form-inline my-2 my-lg-0">
+                                                    <input class="form-control mr-sm-2 " type="search " placeholder="Código" (keyup.enter)="buscar(buscarTexto.value)" #buscarTexto>
+                                                    <button class="btn btn-pill btn-outline-success my-2 my-sm-0 " type="button">
+                            <i class="fa fa-search"></i>&nbsp;Buscar
+                          </button>
+                                                    <br />
+                                                </div>
+                                                <br /> <br />
+                                                <table class="table table-responsive-sm table-hover table-outline mb-0">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th class="text-center">Simulador</th>
+                                                            <th class="text-center">Ilusión</th>
+                                                            <th class="text-center">Nombre</th>
+                                                            <th class="text-center">Lugar</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let item of plan_consulta | paginate: { itemsPerPage: 10, currentPage: p2 }">
+                                                            <td class="text-center">
+                                                                <strong>{{item.simulador}}</strong>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <strong>{{item.ilusion}}</strong>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-muted text-center">{{item.nombre}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-muted text-center">{{item.lugar}}</div>
+                                                            </td>
+                                                            <td><button class="btn btn-sm btn-pill btn-ghost-dark" type="button" (click)="verPlan(item)" nextStep>
+                                  <i class="fa fa-edit "></i>&nbsp; Seleccionar
+                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br />
+                                                <pagination-controls (pageChange)="p2 = $event"></pagination-controls>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/.col-->
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="button " class="btn btn-pill btn-outline-secondary" (click)="invalidPiloto() " previousStep>Atrás</button>
+                            </div>
+                        </wizard-step>
+                        <wizard-step stepTitle="Seleccione el Formulario">
+                            <div class="animated fadeIn">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="float-right form-inline my-2 my-lg-0">
+                                                    <input class="form-control mr-sm-2 " type="search " placeholder="Código" (keyup.enter)="buscar(buscarTexto.value)" #buscarTexto>
+                                                    <button (click)="buscar(buscarTexto.value)" class="btn btn-pill btn-outline-success my-2 my-sm-0 " type="button">
+                            <i class="fa fa-search"></i>&nbsp;Buscar
+                          </button>
+                                                    <br />
+                                                </div>
+                                                <br /> <br />
+                                                <table class="table table-responsive-sm table-hover table-outline mb-0">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th>Código</th>
+                                                            <th class="text-center">Nombre</th>
+                                                            <th class="text-center">Fecha</th>
+                                                            <th class="text-center">Detalle</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let item of formulario_consulta | paginate: { itemsPerPage: 10, currentPage: p1 }">
+                                                            <td class="text-center">
+                                                                <strong>{{item.codigo}}</strong>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-muted text-center">{{item.nombre}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-muted text-center">{{item.fecha_mod}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-muted text-center">{{item.detalle}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-sm btn-pill btn-ghost-dark" type="button" (click)="verFormulario(item)" nextStep>
+                                  <i class=" fa fa-edit "></i>&nbsp; Seleccionar
+                                </button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br />
+                                                <pagination-controls (pageChange)="p1 = $event"></pagination-controls>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/.col-->
+                            </div>
+                            <div class="card-footer">
+                                <button type="button " class="btn btn-pill btn-outline-secondary" (click)="invalidPlan() " previousStep>Atrás</button>
+                            </div>
+                        </wizard-step>
+                        <wizard-step stepTitle="Calificar ">
+                            <div class="container">
+                                <ngb-alert *ngIf="successMessage" type="{{ alert.type }}" (close)="successMessage = null">{{ alert.msg }}
+                                </ngb-alert>
+                            </div>
+                            <form (ngSubmit)="onSubmit(forma)" #forma="ngForm">
+                                <div class="animated fadeIn">
+                                    <div class="card">
+                                        <div class="card-header align-items-center center-block">
+                                            <h4 class="align-text-center">ARMADA DEL ECUADOR ESCUELA DE AVIACIÓN NAVAL</h4>
+                                            <p><code class="align-text-center"> Pilotos de Aviación</code></p>
+                                            <h5 class="align-text-center">INSTRUMENTO DE EVALUACIÓN RÚBRICA</h5>
+                                            <p class="align-text-center">PARA LA VALORACIÓN DEL EJERCICIO DE SIMULACIÓN SDO</p>
+                                        </div>
+
+                                        <div class="card-body">
+                                            <form action="" method="post">
+                                                <div class="row">
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-drivers-license-o "> Fuerza</i></span>
+                                                            </div>
+                                                            <input type="text" id="fuerza" name="fuerza" class="form-control" placeholder="Fuerza/Institución" [(ngModel)]="evaluacion.fuerza">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-drivers-license-o "> Unidad</i></span>
+                                                            </div>
+                                                            <input type="text" id="unidad" name="unidad" class="form-control" placeholder="Reparto/Unidad" [(ngModel)]="evaluacion.unidad">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-drivers-license-o "> Fecha</i></span>
+                                                            </div>
+                                                            <input type="text" id="fecha" name="fecha" class="form-control" placeholder="Fecha" [(ngModel)]="fecha" disabled="true">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-drivers-license-o "> Horas</i></span>
+                                                            </div>
+                                                            <input type="number" id="horas_vuelo" name="horas_vuelo" class="form-control" placeholder="Horas de Vuelo" requied [(ngModel)]="evaluacion.horas_vuelo">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-envelope"> Función</i></span>
+                                                            </div>
+                                                            <select id="funcion" name="funcion" class="form-control" [(ngModel)]="evaluacion.funcion" requied>
+                                <option value=""> Seleccionar </option>
+                                <option *ngFor="let item of catalogoFuncion" [value]="item.valor">{{item.detalle}}</option>
+                              </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group col-sm-6">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-birthday-cake"> Aeronave</i></span>
+                                                            </div>
+                                                            <select id="aeronave" name="aeronave" class="form-control" [(ngModel)]="evaluacion.aeronave" requied>
+                                <option value=""> Seleccionar </option>
+                                <option *ngFor="let item of catalogoAeronave" [value]="item.valor">{{item.detalle}}</option>
+                              </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-hand-pointer-o"> Observaciones</i></span>
+                                                            </div>
+                                                            <input type="text" id="observacion" name="observacion" class="form-control" placeholder="Observaciones" [(ngModel)]="evaluacion.observacion">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text"><i class="fa fa-hand-pointer-o"> Gráfico</i></span>
+                                                            </div>
+                                                            <input type="file" id="grafico" placeholder="Gráfico" (change)="onFileChanged($event)">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12">
+                                                        <div class="input-group">
+                                                            <br />
+                                                            <table class="table table-responsive-sm table-hover table-outline mb-0">
+                                                                <thead class="thead-light">
+                                                                    <tr>
+                                                                        <th>Código</th>
+                                                                        <th class="text-center">No Reconocida</th>
+                                                                        <th class="text-center">Reconocida</th>
+                                                                        <th class="text-center">Incapacitante</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr *ngFor="let item of preguntas; index as i">
+                                                                        <td class="text-center">
+                                                                            <strong>{{item.criterio}}</strong>
+                                                                        </td>
+                                                                        <td *ngFor="let itemRes of item.respuestaList; index as j">
+                                                                            <div class="" id="respuestas-{{i}}">
+                                                                                <input type="radio" [(ngModel)]="resFormulario[i]" name="respuestas-{{i}}" value="{{item.codigo}}-{{itemRes.codigo}}" id="inline-{{j}}" class="form-check-input">
+                                                                                <label class="form-check-label" for="inline-{{j}}">{{itemRes.detalle}}</label>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <br />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer ">
+                                    <button type="button " class="btn btn-pill btn-outline-secondary" (click)="invalidFormulario() " previousStep>Atras</button>
+                                    <button [disabled]="!forma" type="submit" class="float-right btn btn-pill btn-outline-success">Evaluar</button>
+                                </div>
+                            </form>
+                        </wizard-step>
+
+                        <div bsModal #largeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" style="width: 635px;" role="document">
+                                <div class="modal-content" style="width: 635px;">
+                                    <div class="modal-header" style="width: 635px;">
+                                        <h4 class="modal-title">Validacion de Huella</h4>
+                                        <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                                    </div>
+                                    <div class="modal-body" style="width: 635px;">
+                                        <app-valida-huella #registro (outValidate)="mostrarInfo($event)"></app-valida-huella>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button *ngIf="isValidate" (click)="largeModal.hide()" type="button" class="float-right btn btn-pill btn-outline-primary my-2 my-sm-0" nextStep>Continuar</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                    </wizard>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+</div>
+
+<div class="container">
+    <ngb-alert *ngIf="successMessage" type="{{ alert.type }}" (close)="successMessage = null">{{ alert.msg }}</ngb-alert>
+</div>

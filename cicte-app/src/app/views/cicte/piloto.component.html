@@ -1,0 +1,104 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="float-left form-inline my-2 my-lg-0">
+                        <button type="button" class="btn btn-ghost-success" data-toggle="modal" (click)="largeModal.show()">
+                                <i class="fa fa-plus"></i>&nbsp;Nuevo Piloto
+                        </button>
+                    </div>
+                    <div class="float-right form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2 " type="search " placeholder="Identificación del Piloto" (keyup.enter)="buscar(buscarTexto.value)" #buscarTexto>
+                        <button (click)="buscar(buscarTexto.value)" class="btn btn-pill btn-outline-success my-2 my-sm-0 " type="button">
+                                <i class="fa fa-search"></i>&nbsp;Buscar
+                        </button>
+                        <br/>
+                    </div>
+                    <br/> <br/>
+                    <table class="table table-responsive-sm table-hover table-outline mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="text-center"><i class="icon-people"></i></th>
+                                <th>Nombre</th>
+                                <th class="text-center">País</th>
+                                <th class="text-center">Identificación</th>
+                                <th class="text-center">Fuerza</th>
+                                <th class="text-center">Grado - Unidad</th>
+                                <th class="text-center">Correo</th>
+                                <th class="text-center">Teléfono</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of itemList | paginate: { itemsPerPage: 10, currentPage: p }">
+                                <td class="text-center">
+                                    <div class="avatar">
+                                        <img *ngIf="item.foto != null" [src]="'data:image/jpg;base64,' + item.foto" class="img-avatar">
+                                        <img *ngIf="item.foto == null" src="assets/img/avatars/user.jpg" class="img-avatar" alt="pablo.villamar@outlook.com">
+                                        <span class="avatar-status badge-success"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>{{item.nombres}} {{item.apellidos}}</div>
+                                    <div class="small text-muted">
+                                        <span>{{item.fecha_nac | date: 'shortDate'}}</span>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <i [class]=" 'flag-icon h4 mb-0 flag-icon-'+ item.nacionalidad | lowercase" title="us" [id]="item.nacionalidad | lowercase"></i>
+                                </td>
+                                <td class="text-center">
+                                    <strong>{{item.id_mil}}</strong>
+                                </td>
+                                <td class="text-center">
+                                    <strong>{{item.fuerza}}</strong>
+                                </td>
+                                <td class="text-center">
+                                    <div class="float-left small">{{item.rango}} | {{item.unidad}}</div>
+                                </td>
+                                <td>
+                                    <div class="text-muted text-center">{{item.email}}</div>
+                                </td>
+                                <td>
+                                    <div class="text-muted text-center">{{item.telefono}}</div>
+                                </td>
+                                <td><button class="btn btn-sm btn-pill btn-primary" type="button" data-toggle="modal" (click)="largeModal.show(item)" (click)="ver(item)">
+                                        <i class="fa fa-edit "></i>&nbsp;Editar
+                                    </button>
+                                </td>
+                                <td><button class="btn btn-sm btn-pill btn-danger" type="button" (click)="eliminar(item.id_mil)">
+                                        <i class="fa fa-eraser"></i>&nbsp;Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+</div>
+
+<div bsModal #largeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Piloto</h4>
+                <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-registro-piloto #registro></app-registro-piloto>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

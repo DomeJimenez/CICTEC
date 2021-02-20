@@ -1,0 +1,2 @@
+idcic_evaluacion,ev_fecha,ev_observacion,ev_piloto,ev_instructor,ev_plan,ev_grafico_xy,ev_grafico_xz,ev_funcion,ev_aeronave,ev_horas_vuelo
+NULL,"\func NOW()","El piloto cumple satisfactoriamente la simulación",1721712741,1,1,NULL,NULL,1,1,200

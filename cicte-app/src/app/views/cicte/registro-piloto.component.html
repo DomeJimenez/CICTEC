@@ -1,0 +1,113 @@
+<form (ngSubmit)="onSubmit(pilotoForm);" #pilotoForm="ngForm">
+    <div class="animated fadeIn">
+        <div class="card">
+            <div class="card-header">
+                Ingresar Información del Personal <code> Pilotos de Aviación</code>
+            </div>
+
+            <div class="card-body">
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-drivers-license-o "></i></span>
+                                </div>
+                                <input type="text" id="id" name="id" class="form-control" placeholder="Identificación - Cédula">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-drivers-license-o "></i></span>
+                                </div>
+                                <input type="text" id="id-mil" name="id-mil" class="form-control" placeholder="Identificación - Militar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                </div>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-birthday-cake"></i></span>
+                                </div>
+                                <input type="date" id="fecha_nac" name="fecha_nac" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-star"></i></span>
+                                </div>
+                                <select id="rango" name="rango" class="form-control">
+                                <option value="0">Rango</option>
+                                <option value="1">Teniente</option>
+                                <option value="2">Capitan</option>
+                                <option value="3">Mayor</option>
+                                <option value="4">Coronel</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-phone-square"></i></span>
+                                </div>
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="09XXXXXX99" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-hand-pointer-o"></i></span>
+                                </div>
+                                <input id="huella" class="form-control" type="text" disabled>
+                                <span class="input-group-append">
+                                    <button class="btn btn-secondary" type="button">Ingresar Huella</button>
+                                  </span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-drivers-license-o"></i></span>
+                                </div>
+                                <input type="file" placeholder="Foto" name="img" multiple (change)="onFileChanged($event)">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,80 @@
+<div class="container">
+    <ngb-alert *ngIf="successMessage" type="{{ alert.type }}" (close)="successMessage = null">{{ alert.msg }}</ngb-alert>
+</div>
+<form (ngSubmit)="onSubmit(forma)" #forma="ngForm">
+    <div class="animated fadeIn">
+        <div class="card">
+            <div class="card-header">
+                Ingrese Información de <code>Instructores </code>
+            </div>
+
+            <div class="card-body">
+                <!--<alert *ngIf="submit" [type]="alert.type" [dismissible]="dismissible">{{ alert.msg }}</alert>-->
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-drivers-license-o "> Cédula</i>
+                                </span>
+                            </div>
+                            <input type="text" id="cedula" name="cedula" class="form-control" placeholder="Identificación - Cédula" [(ngModel)]="instructor.cedula" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-drivers-license-o "> Identificación</i>
+                                </span>
+                            </div>
+                            <input type="text" id="id-mil" name="id-mil" class="form-control" placeholder="Identificación - Militar" [(ngModel)]="instructor.id_mil" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"> Nombres</i></span>
+                            </div>
+                            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombres" [(ngModel)]="instructor.nombre" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text text-lg-left"><i class="fa fa-user"> Apellidos</i></span>
+                            </div>
+                            <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Apellidos" [(ngModel)]="instructor.apellido" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-star"> Grado</i></span>
+                            </div>
+                            <select id="grado" name="grado" class="form-control" [(ngModel)]="instructor.grado" requied>
+                                <option value=""> Seleccionar </option>
+                                <option *ngFor="let item of catalogo" [value]="item.valor">{{item.detalle}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-star"> Email</i></span>
+                            </div>
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email" [(ngModel)]="instructor.email" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button [disabled]="!forma" type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</form>

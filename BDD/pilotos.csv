@@ -1,0 +1,3 @@
+idcic_piloto,pi_nombre,pi_apellidos,pi_fecha_nacimiento,pi_grado,pi_fecha_reg,pi_fecha_mod,pi_nacionalidad,pi_cedula,pi_id_mil,pi_foto,pi_estado,pi_fuerza,pi_unidad,pi_email,pi_telefono,pi_servicio
+1,Pablo,Villamar,"1992-10-17 00:00:00",1,"2018-11-03 12:20:40","2018-11-03 12:20:40",EC,1721712741,1721712741,...,A,AEREA,PL-9855,pablo.villamar@outlook.com,0998208683,"\func default"
+2,Alexander,Morales,"1992-10-17 00:00:00",5,"2018-11-03 17:53:17","2018-11-03 17:53:17",BO,1721712742,1721712742,...,P,AEREA,PL-6780,alexvmhsr@gmail.com,0982086845,"\func default"

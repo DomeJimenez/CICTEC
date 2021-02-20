@@ -1,0 +1,50 @@
+<div class= "container">
+  <ngb-alert *ngIf="successMessage" type="{{ alert.type }}" (close)="successMessage = null">{{ alert.msg }}</ngb-alert>
+</div>
+<form (ngSubmit)="onSubmit(forma)" #forma="ngForm">
+  <div class="animated fadeIn">
+      <div class="card">
+          <div class="card-header">
+              Ingrese Información de <code>Simuladores </code>
+          </div>
+
+          <div class="card-body">
+              <!--<alert *ngIf="submit" [type]="alert.type" [dismissible]="dismissible">{{ alert.msg }}</alert>-->
+              <div class="row">                  
+                  <div class="form-group col-sm-6">
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-user"> Ilusión</i></span>
+                          </div>
+                          <input type="text" id="ilusion" name="ilusion" class="form-control" placeholder="Nombre"
+                              [(ngModel)]="plan.ilusion" disabled>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-sm-6">
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-user"> Nombre</i></span>
+                          </div>
+                          <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre"
+                              [(ngModel)]="plan.nombre" required>
+                      </div>
+                  </div>
+                  <div class="form-group col-sm-6">
+                      <div class="input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="fa fa-user"> Lugar</i></span>
+                          </div>
+                          <input type="text" id="lugar" name="lugar" class="form-control" placeholder="Ubicación"
+                              [(ngModel)]="plan.lugar" required>
+                      </div>
+                  </div>                    
+              </div>        
+          </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button [disabled]="!forma" type="submit" class="btn btn-primary">Guardar</button>
+  </div>
+</form>

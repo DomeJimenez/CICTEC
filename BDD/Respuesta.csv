@@ -1,0 +1,7 @@
+idcic_respuesta,re_tipo,re_detalle,re_pregunta,re_estado
+NULL,1,"El Piloto NO percibe conscientemente ninguna manifestación de desorientación narutal ni artificial",1,"\func default"
+NULL,2,"El piloto percibe conscientemente algún tipo de manifestación de SDO. Puede tener un conflicto entre la orientación natural con la artificial",1,"\func default"
+NULL,3,"Manifestaciones físicas intensas y sobrecogedoras,  nistagmos (movimiento horizontal automático de los ojos",1,"\func default"
+NULL,1,"El piloto no hará nada en absoluto para su corrección",2,"\func default"
+NULL,2,"Puede manifestarse exclusivamente como una dificultad para controlar la aeronave sin saber el porqué",2,"\func default"
+NULL,3,"El piloto pierde la capacidad de controlar la aeronave",2,"\func default"
